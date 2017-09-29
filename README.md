@@ -1,2 +1,2 @@
-# blakfisk-examples
-Examples using blakfisk
+# etyl-networking-examples
+Examples using [etyl-networking](https://github.com/Harium/etyl-networking)

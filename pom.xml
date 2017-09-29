@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hraium.blakfisk</groupId>
-    <artifactId>blakfisk-examples</artifactId>
+    <groupId>com.harium.etyl.networking</groupId>
+    <artifactId>etyl-networking-examples</artifactId>
     <version>1.0.0</version>
     <dependencies>
         <dependency>
-            <groupId>com.harium.blakfisk</groupId>
-            <artifactId>blakfisk</artifactId>
+            <groupId>com.harium.etyl.networking</groupId>
+            <artifactId>networking</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
@@ -19,9 +19,9 @@
             <version>1.0.1</version>
         </dependency>
         <dependency>
-            <groupId>com.harium</groupId>
+            <groupId>com.harium.etyl</groupId>
             <artifactId>etyl</artifactId>
-            <version>1.0.18</version>
+            <version>1.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.jmdns</groupId>
