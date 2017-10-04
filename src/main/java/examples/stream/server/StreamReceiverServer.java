@@ -1,11 +1,11 @@
 package examples.stream.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
 import examples.stream.client.StreamSenderProtocol;
 import examples.stream.listener.StreamReceiverListener;
 
-public class StreamReceiverServer extends BlakFiskServer {
+public class StreamReceiverServer extends EtylServer {
 
 	private StreamReceiverProtocol protocol;
 
@@ -26,14 +26,14 @@ public class StreamReceiverServer extends BlakFiskServer {
 		
 	@Override
 	public void joinPeer(Peer peer) {
-		System.out.println("ActionPeer "+peer.getID()+" connected.");
+		System.out.println("ActionPeer "+peer.getId()+" connected.");
 		
 		protocol.addPeer(peer);
 	}
 	
 	@Override
 	public void leftPeer(Peer peer) {
-		System.out.println("Player "+peer.getID()+" disconnected.");
+		System.out.println("Player "+peer.getId()+" disconnected.");
 		
 		protocol.removePeer(peer);
 	}

@@ -4,7 +4,7 @@ import examples.ping.server.PingServer;
 
 public class PingServerExample {
 	
-	public static final int PORT = 10999;
+	public static final int PORT = 10991;
 	
 	public static void main(String[] args) {
 		PingServer server = new PingServer(PORT);

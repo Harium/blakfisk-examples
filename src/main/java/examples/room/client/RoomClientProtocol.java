@@ -1,9 +1,9 @@
 package examples.room.client;
 
-import com.harium.blakfisk.BlakFiskClient;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.ProtocolUtils;
-import com.harium.blakfisk.protocol.common.StringClientProtocol;
+import com.harium.etyl.networking.EtylClient;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.ProtocolUtils;
+import com.harium.etyl.networking.protocol.common.StringClientProtocol;
 import examples.room.model.Room;
 
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class RoomClientProtocol extends StringClientProtocol {
 
     public static final String PREFIX_READY = "d";
 
-    public RoomClientProtocol(RoomClientListener listener, BlakFiskClient client) {
+    public RoomClientProtocol(RoomClientListener listener, EtylClient client) {
         super(PREFIX_ROOM_ACTION, client);
         this.listener = listener;
     }

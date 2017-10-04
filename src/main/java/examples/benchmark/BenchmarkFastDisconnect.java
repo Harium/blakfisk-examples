@@ -1,13 +1,13 @@
 package examples.benchmark;
 
-import com.harium.blakfisk.BlakFiskClient;
-import com.harium.blakfisk.backend.kryo.KryoEndpoint;
+import com.harium.etyl.networking.EtylClient;
+import com.harium.etyl.networking.protocol.ProtocolHandler;
 import examples.simpletcp.server.HandShakeServer;
 import examples.simpletcp.server.SimpleServerProtocol;
 
 public class BenchmarkFastDisconnect {
 
-    private static final String IP = KryoEndpoint.LOCAL_HOST;
+    private static final String IP = ProtocolHandler.LOCAL_HOST;
     private static final int PORT = 10101;
 
     private static final String LISTENER_PREFIX = "/s";
@@ -22,7 +22,7 @@ public class BenchmarkFastDisconnect {
 
         //Create multiple
         for (int i = 0; i < 1300; i++) {
-            BlakFiskClient client = new BlakFiskClient(IP, PORT);
+            EtylClient client = new EtylClient(IP, PORT);
             client.connect();
             client.close();
         }

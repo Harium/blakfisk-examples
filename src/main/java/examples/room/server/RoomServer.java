@@ -1,10 +1,10 @@
 package examples.room.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
 import examples.room.client.RoomClientProtocol;
 
-public class RoomServer extends BlakFiskServer {
+public class RoomServer extends EtylServer {
 
 	private RoomServerProtocol protocol;
 
@@ -26,14 +26,14 @@ public class RoomServer extends BlakFiskServer {
 	
 	@Override
 	public void joinPeer(Peer peer) {
-		System.out.println("ActionPeer "+peer.getID()+" connected.");
+		System.out.println("ActionPeer "+peer.getId()+" connected.");
 		
 		protocol.addPeer(peer);
 	}
 	
 	@Override
 	public void leftPeer(Peer peer) {
-		System.out.println("Player "+peer.getID()+" disconnected.");
+		System.out.println("Player "+peer.getId()+" disconnected.");
 		
 		protocol.removePeer(peer);
 	}

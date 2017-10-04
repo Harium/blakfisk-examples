@@ -1,8 +1,8 @@
 package examples.action.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.common.StringServerProtocol;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.common.StringServerProtocol;
 import examples.action.client.ActionClientProtocol;
 
 import java.util.LinkedHashSet;
@@ -12,7 +12,7 @@ public class ActionServerProtocol extends StringServerProtocol {
 
     private Set<Integer> players = new LinkedHashSet<Integer>();
 
-    public ActionServerProtocol(String prefix, BlakFiskServer server) {
+    public ActionServerProtocol(String prefix, EtylServer server) {
         super(prefix, server);
     }
 
@@ -21,14 +21,14 @@ public class ActionServerProtocol extends StringServerProtocol {
     @Override
     public void addPeer(Peer peer) {
         super.addPeer(peer);
-        players.add(peer.getID());
-        sendTCPtoAll(ActionClientProtocol.PREFIX_JOIN + " " + peer.getID());
+        players.add(peer.getId());
+        sendTCPtoAll(ActionClientProtocol.PREFIX_JOIN + " " + peer.getId());
     }
 
     public void removePeer(Peer peer) {
         super.removePeer(peer);
-        players.remove(peer.getID());
-        sendTCPtoAll(ActionClientProtocol.PREFIX_EXIT + " " + peer.getID());
+        players.remove(peer.getId());
+        sendTCPtoAll(ActionClientProtocol.PREFIX_EXIT + " " + peer.getId());
     }
 
     @Override
@@ -41,7 +41,7 @@ public class ActionServerProtocol extends StringServerProtocol {
         System.out.println(getClass().getSimpleName() + " - Received TCP: " + msg);
         receivedTcp = true;
 
-        sendTCPtoAll(peer.getID() + " " + msg);
+        sendTCPtoAll(peer.getId() + " " + msg);
     }
 
     public boolean receivedTcp() {

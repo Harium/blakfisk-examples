@@ -1,8 +1,8 @@
 package examples.orientation.client;
 
-import com.harium.blakfisk.BlakFiskClient;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.common.StringClientProtocol;
+import com.harium.etyl.networking.EtylClient;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.common.StringClientProtocol;
 import examples.orientation.listener.OrientationListener;
 import examples.orientation.model.PlayerOrientation;
 
@@ -20,7 +20,7 @@ public class OrientationClientProtocol extends StringClientProtocol {
     public static final String ACTION_START_LONG_CLICK = "slc";
     public static final String ACTION_STOP_LONG_CLICK = "plc";
 
-    public OrientationClientProtocol(OrientationListener listener, BlakFiskClient client) {
+    public OrientationClientProtocol(OrientationListener listener, EtylClient client) {
         super(PREFIX_ACTION, client);
         this.listener = listener;
     }

@@ -1,19 +1,19 @@
 package examples.simpletcp.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.HandshakerProtocol;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.HandshakerProtocol;
 import examples.simpletcp.client.SimpleClientProtocol;
 
 public class SimpleHandshaker extends HandshakerProtocol {
 
-    public SimpleHandshaker(BlakFiskServer server) {
+    public SimpleHandshaker(EtylServer server) {
         super(SimpleClientProtocol.DEFAULT_PREFIX, server);
     }
 
     @Override
-    public String handshakeText(Peer peer) {
-        return " Hello, player " + peer.getID() + "!";
+    public String buildHandshake(Peer peer) {
+        return "Hello, player " + peer.getId() + "!";
     }
 
 }

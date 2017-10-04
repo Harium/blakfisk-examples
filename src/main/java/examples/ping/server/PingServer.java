@@ -1,10 +1,10 @@
 package examples.ping.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
 import examples.ping.client.PingClientProtocol;
 
-public class PingServer extends BlakFiskServer {
+public class PingServer extends EtylServer {
 
     private PingServerProtocol listener;
 
@@ -19,13 +19,13 @@ public class PingServer extends BlakFiskServer {
 
     @Override
     public void joinPeer(Peer peer) {
-        System.out.println("PingPeer " + peer.getID() + " connected.");
+        System.out.println("PingPeer " + peer.getId() + " connected.");
         listener.addPeer(peer);
     }
 
     @Override
     public void leftPeer(Peer peer) {
-        System.out.println("PingPeer " + peer.getID() + " disconnected.");
+        System.out.println("PingPeer " + peer.getId() + " disconnected.");
         listener.removePeer(peer);
     }
 

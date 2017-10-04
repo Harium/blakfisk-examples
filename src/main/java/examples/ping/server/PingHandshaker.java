@@ -1,19 +1,19 @@
 package examples.ping.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.HandshakerProtocol;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.HandshakerProtocol;
 import examples.ping.client.PingClientProtocol;
 
 public class PingHandshaker extends HandshakerProtocol {
 
-    public PingHandshaker(BlakFiskServer server) {
+    public PingHandshaker(EtylServer server) {
         super(PingClientProtocol.PREFIX_PING, server);
     }
 
     @Override
-    public String handshakeText(Peer peer) {
-        return peer.getID() + " " + System.currentTimeMillis();
+    public String buildHandshake(Peer peer) {
+        return peer.getId() + " " + System.currentTimeMillis();
     }
 
 }

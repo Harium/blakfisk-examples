@@ -1,11 +1,11 @@
 package examples.action.view;
 
-import com.harium.blakfisk.backend.kryo.KryoEndpoint;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.KeyEvent;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.core.graphics.Graphics;
+import com.harium.etyl.networking.protocol.ProtocolHandler;
 import examples.action.client.ActionClient;
 import examples.action.client.ActionClientListener;
 import examples.action.client.ActionClientProtocol;
@@ -36,7 +36,7 @@ public class ActionClientApplication extends Application implements ActionClient
     public void load() {
 
         //client = new ActionClient("192.168.0.20", PORT, this);
-        client = new ActionClient(KryoEndpoint.LOCAL_HOST, PORT, this);
+        client = new ActionClient(ProtocolHandler.LOCAL_HOST, PORT, this);
         client.connect();
 
         protocol = client.getActionProtocol();

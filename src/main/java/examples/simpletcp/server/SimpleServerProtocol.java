@@ -1,13 +1,13 @@
 package examples.simpletcp.server;
 
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.common.StringServerProtocol;
+import com.harium.etyl.networking.model.BaseServer;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.common.StringServerProtocol;
 
 public class SimpleServerProtocol extends StringServerProtocol {
 
-    public SimpleServerProtocol(String prefix, BlakFiskServer server) {
+    public SimpleServerProtocol(String prefix, BaseServer server) {
         super(prefix, server);
     }
 
@@ -23,7 +23,7 @@ public class SimpleServerProtocol extends StringServerProtocol {
         System.out.println(getClass().getSimpleName() + " - Received TCP: " + msg);
         receivedTcp = true;
 
-        sendTCPtoAll("Hallu " + peer.getID());
+        sendTCPtoAll("Hallu " + peer.getId());
     }
 
     public boolean receivedTcp() {

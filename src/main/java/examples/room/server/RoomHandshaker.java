@@ -1,22 +1,22 @@
 package examples.room.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.HandshakerProtocol;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.HandshakerProtocol;
 import examples.room.client.RoomClientProtocol;
 
 public class RoomHandshaker extends HandshakerProtocol {
 
     private RoomServerProtocol protocol;
 
-    public RoomHandshaker(RoomServerProtocol protocol, BlakFiskServer server) {
+    public RoomHandshaker(RoomServerProtocol protocol, EtylServer server) {
         super(RoomClientProtocol.PREFIX_ROOM_ACTION, server);
         this.protocol = protocol;
     }
 
     @Override
-    public String handshakeText(Peer peer) {
-        String message = RoomClientProtocol.PREFIX_CONNECT + " " + peer.getID() + " ";
+    public String buildHandshake(Peer peer) {
+        String message = RoomClientProtocol.PREFIX_CONNECT + " " + peer.getId() + " ";
         message += RoomClientProtocol.DATA_SEPARATOR;
         message += protocol.getRooms().size();
         message += RoomClientProtocol.DATA_SEPARATOR;

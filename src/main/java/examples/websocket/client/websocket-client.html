@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        hr {
+          width: 938px;
+          margin-left: 0px;
+        }
+    </style>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+         function WebSocketTest()
+         {
+            if ("WebSocket" in window)
+            {
+               alert("WebSocket is supported by your Browser!");
+               
+               // Let us open a web socket
+               var socket = new WebSocket("ws://localhost:10999");
+               socket.binaryType = 'blob'
+				
+               socket.onopen = function()
+               {
+                  // Web Socket is connected, send data using send()
+                  socket.send("echo message to send");
+                  alert("Message is sent...");
+               };
+				
+               socket.onmessage = function (evt) 
+               { 
+                  var reader = new FileReader();
+                  reader.onload = function() {
+                      $("#messages").append(
+                        '<div class="row message-bubble"><p class="text-muted">Server</p><span>'+reader.result+'</span><hr /></div>');
+                  }
+                  reader.readAsText(evt.data);
+                  alert("Message is received...");
+               };
+				
+               socket.onclose = function()
+               {
+                  // websocket is closed.
+                  alert("Connection is closed..."); 
+               };
+
+               window.onbeforeunload = function(event) {
+                  socket.close();
+               };
+            }
+            
+            else
+            {
+               // The browser doesn't support WebSocket
+               alert("WebSocket NOT supported by your Browser!");
+            }
+         }
+
+
+    </script>
+
+</head>
+<body>
+
+<div class="container col-lg-1 col-centered">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">Messages</div>
+            <div class="panel-body">
+                <div class="container" id="messages">
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button">Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="sse">
+        <a class="btn btn-primary" href="javascript:WebSocketTest()">Run WebSocket</a>
+    </div>
+</div>
+
+
+</body>
+</html>

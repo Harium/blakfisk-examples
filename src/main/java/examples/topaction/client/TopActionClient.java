@@ -1,9 +1,9 @@
 package examples.topaction.client;
 
-import com.harium.blakfisk.BlakFiskClient;
+import com.harium.etyl.networking.EtylClient;
 import examples.action.client.ActionClientListener;
 
-public class TopActionClient extends BlakFiskClient {
+public class TopActionClient extends EtylClient {
 
     private TopActionClientProtocol actionProtocol;
 

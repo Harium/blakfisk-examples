@@ -1,13 +1,13 @@
 package examples.ping.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.common.StringServerProtocol;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.common.StringServerProtocol;
 import examples.ping.client.PingClientProtocol;
 
 public class PingServerProtocol extends StringServerProtocol {
 
-    public PingServerProtocol(String prefix, BlakFiskServer server) {
+    public PingServerProtocol(String prefix, EtylServer server) {
         super(prefix, server);
     }
 

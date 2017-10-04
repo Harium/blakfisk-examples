@@ -1,15 +1,15 @@
 package examples.ping.client;
 
-import com.harium.blakfisk.BlakFiskClient;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.common.StringClientProtocol;
+import com.harium.etyl.networking.EtylClient;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.common.StringClientProtocol;
 
 public class PingClientProtocol extends StringClientProtocol {
 
     public static final String PREFIX_PING = "ping";
     public static final String PREFIX_PONG = "PONG";
 
-    public PingClientProtocol(BlakFiskClient client) {
+    public PingClientProtocol(EtylClient client) {
         super(PREFIX_PING, client);
     }
 

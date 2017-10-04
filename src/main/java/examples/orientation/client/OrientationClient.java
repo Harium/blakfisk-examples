@@ -1,9 +1,9 @@
 package examples.orientation.client;
 
-import com.harium.blakfisk.BlakFiskClient;
+import com.harium.etyl.networking.EtylClient;
 import examples.orientation.listener.OrientationListener;
 
-public class OrientationClient extends BlakFiskClient {
+public class OrientationClient extends EtylClient {
 
 	private OrientationClientProtocol actionProtocol;
 	

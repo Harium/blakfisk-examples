@@ -1,8 +1,8 @@
 package examples.room.client;
 
-import com.harium.blakfisk.BlakFiskClient;
+import com.harium.etyl.networking.EtylClient;
 
-public class RoomClient extends BlakFiskClient {
+public class RoomClient extends EtylClient {
 
     private RoomClientProtocol roomProtocol;
 

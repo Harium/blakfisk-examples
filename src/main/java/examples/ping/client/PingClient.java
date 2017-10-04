@@ -1,8 +1,8 @@
 package examples.ping.client;
 
-import com.harium.blakfisk.BlakFiskClient;
+import com.harium.etyl.networking.EtylClient;
 
-public class PingClient extends BlakFiskClient {
+public class PingClient extends EtylClient {
 
     private PingClientProtocol pingProtocol;
 
