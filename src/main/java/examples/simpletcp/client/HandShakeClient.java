@@ -1,8 +1,8 @@
 package examples.simpletcp.client;
 
-import com.harium.blakfisk.BlakFiskClient;
+import com.harium.etyl.networking.EtylClient;
 
-public class HandShakeClient extends BlakFiskClient {
+public class HandShakeClient extends EtylClient {
 
     private boolean running = true;
     private SimpleClientProtocol simpleProtocol;

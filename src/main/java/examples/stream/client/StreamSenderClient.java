@@ -1,10 +1,10 @@
 package examples.stream.client;
 
 
-import com.harium.blakfisk.BlakFiskClient;
+import com.harium.etyl.networking.EtylClient;
 import examples.stream.listener.StreamSenderListener;
 
-public class StreamSenderClient extends BlakFiskClient {
+public class StreamSenderClient extends EtylClient {
 
     private StreamSenderProtocol protocol;
 

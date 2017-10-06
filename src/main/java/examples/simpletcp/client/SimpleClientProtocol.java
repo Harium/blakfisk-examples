@@ -1,14 +1,14 @@
 package examples.simpletcp.client;
 
-import com.harium.blakfisk.BlakFiskClient;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.common.StringClientProtocol;
+import com.harium.etyl.networking.model.BaseClient;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.common.StringClientProtocol;
 
 public class SimpleClientProtocol extends StringClientProtocol {
 
     public static final String DEFAULT_PREFIX = "/s";
 
-    public SimpleClientProtocol(BlakFiskClient client) {
+    public SimpleClientProtocol(BaseClient client) {
         super(DEFAULT_PREFIX, client);
     }
 

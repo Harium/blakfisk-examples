@@ -1,8 +1,8 @@
 package examples.action.client;
 
-import com.harium.blakfisk.BlakFiskClient;
+import com.harium.etyl.networking.EtylClient;
 
-public class ActionClient extends BlakFiskClient {
+public class ActionClient extends EtylClient {
 
     private ActionClientProtocol actionProtocol;
 

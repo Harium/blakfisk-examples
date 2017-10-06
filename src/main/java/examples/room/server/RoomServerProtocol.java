@@ -1,9 +1,9 @@
 package examples.room.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.ProtocolUtils;
-import com.harium.blakfisk.protocol.common.StringServerProtocol;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.ProtocolUtils;
+import com.harium.etyl.networking.protocol.common.StringServerProtocol;
 import examples.room.client.RoomClientProtocol;
 import examples.room.model.Room;
 
@@ -20,7 +20,7 @@ public class RoomServerProtocol extends StringServerProtocol {
 	private Map<String, Room> rooms = new LinkedHashMap<String, Room>();
 	private Map<Peer, Room> owners = new LinkedHashMap<Peer, Room>();
 	
-	public RoomServerProtocol(String prefix, BlakFiskServer server) {
+	public RoomServerProtocol(String prefix, EtylServer server) {
 		super(prefix, server);
 	}
 	
@@ -81,7 +81,7 @@ public class RoomServerProtocol extends StringServerProtocol {
 			Room room = rooms.get(roomId);
 			startRoom(peer, room);
 		} else {
-			sendTCPtoAll(peer.getID()+" "+msg);
+			sendTCPtoAll(peer.getId()+" "+msg);
 		}
 	}
 
@@ -91,15 +91,15 @@ public class RoomServerProtocol extends StringServerProtocol {
 
 	private void startRoom(Peer peer, Room room) {
 		//If only the creator can start the game 
-		if (room.creatorId == peer.getID()) {
+		if (room.creatorId == peer.getId()) {
 			room.state = RoomState.STARTED;
 			notifyStartedRoom(room);
 		}
 	}
 
 	private void ready(Peer peer, Room room) {
-		room.ready.add(peer.getID());
-		sendTCPtoAll(room.players, RoomClientProtocol.PREFIX_READY+" "+peer.getID());
+		room.ready.add(peer.getId());
+		sendTCPtoAll(room.players, RoomClientProtocol.PREFIX_READY+" "+peer.getId());
 	}
 
 	public void maybeJoinRoom(Peer peer, Room room) {
@@ -119,7 +119,7 @@ public class RoomServerProtocol extends StringServerProtocol {
 	}
 	
 	public void leftRoom(Peer peer, Room room) {
-		int id = peer.getID();
+		int id = peer.getId();
 		
 		sendTCPtoAll(room.players, RoomClientProtocol.PREFIX_EXIT_ROOM+" "+id);
 	}
@@ -131,7 +131,7 @@ public class RoomServerProtocol extends StringServerProtocol {
 		int maxPlayers = Integer.parseInt(part[1]);
 	
 		room.id = generateID();
-		room.creatorId = peer.getID();
+		room.creatorId = peer.getId();
 		room.maxPlayers = maxPlayers;
 		room.state = RoomState.WAITING_PLAYERS;
 				
@@ -146,7 +146,7 @@ public class RoomServerProtocol extends StringServerProtocol {
 	}
 	
 	private void addPeerToRoom(Room room, Peer peer) {
-		int id = peer.getID();
+		int id = peer.getId();
 		
 		//Send just to the players in the room
 		sendTCPtoAll(room.players, RoomClientProtocol.PREFIX_JOIN_ROOM+" "+room.id+" "+id);

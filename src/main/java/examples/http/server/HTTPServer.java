@@ -1,14 +1,16 @@
 package examples.http.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.model.data.ConnectionData;
+import com.harium.etyl.networking.model.data.RawData;
 import examples.http.Http;
 
 import java.io.IOException;
 import java.nio.channels.Channel;
 
 
-public class HTTPServer extends BlakFiskServer {
+public class HTTPServer extends EtylServer {
 
     private HTTPServerProtocol listener;
 
@@ -32,7 +34,7 @@ public class HTTPServer extends BlakFiskServer {
 
     @Override
     public void joinPeer(Peer peer) {
-        System.out.println("HandShakePeer " + peer.getID() + " connected.");
+        System.out.println("HandShakePeer " + peer.getId() + " connected.");
         listener.addPeer(peer);
     }
 

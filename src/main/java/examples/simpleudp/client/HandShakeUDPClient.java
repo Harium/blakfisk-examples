@@ -1,10 +1,10 @@
 package examples.simpleudp.client;
 
-import com.harium.blakfisk.BlakFiskClient;
+import com.harium.etyl.networking.EtylClient;
 import examples.simpletcp.SimpleClientExample;
 import examples.simpletcp.client.SimpleClientProtocol;
 
-public class HandShakeUDPClient extends BlakFiskClient {
+public class HandShakeUDPClient extends EtylClient {
 
     private boolean running = true;
     private SimpleClientProtocol simpleProtocol;

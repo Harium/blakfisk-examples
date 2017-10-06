@@ -3,17 +3,17 @@ package examples.stream.client;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import com.harium.blakfisk.BlakFiskClient;
-import com.harium.blakfisk.codec.image.ImageEncoder;
-import com.harium.blakfisk.codec.image.awt.BufferedImageDirectEncoder;
-import com.harium.blakfisk.codec.image.awt.BufferedImageEncoder;
-import com.harium.blakfisk.codec.image.awt.BufferedImageYUVDirectEncoder;
-import com.harium.blakfisk.compression.Compressor;
-import com.harium.blakfisk.compression.GZipCompressor;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.common.RawClientProtocol;
-import com.harium.blakfisk.util.Base64;
-import com.harium.blakfisk.util.ByteMessageUtils;
+import com.harium.etyl.networking.EtylClient;
+import com.harium.etyl.networking.codec.image.ImageEncoder;
+import com.harium.etyl.networking.codec.image.awt.BufferedImageDirectEncoder;
+import com.harium.etyl.networking.codec.image.awt.BufferedImageEncoder;
+import com.harium.etyl.networking.codec.image.awt.BufferedImageYUVDirectEncoder;
+import com.harium.etyl.networking.compression.Compressor;
+import com.harium.etyl.networking.compression.GZipCompressor;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.common.RawClientProtocol;
+import com.harium.etyl.networking.util.Base64;
+import com.harium.etyl.networking.util.ByteMessageUtils;
 import examples.stream.listener.StreamSenderListener;
 
 public class StreamSenderProtocol extends RawClientProtocol {
@@ -36,7 +36,7 @@ public class StreamSenderProtocol extends RawClientProtocol {
 	public static final String PREFIX_PING = "p";
 	public static final String PREFIX_PONG = "o";
 	
-	public StreamSenderProtocol(StreamSenderListener listener, BlakFiskClient client) {
+	public StreamSenderProtocol(StreamSenderListener listener, EtylClient client) {
 		super(PREFIX_STREAM_ACTION, client);
 		this.listener = listener;
 	}

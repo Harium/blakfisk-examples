@@ -1,20 +1,20 @@
 package examples.stream.server;
 
 
-import com.harium.blakfisk.backend.kryo.KryoServer;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.HandshakerProtocol;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.HandshakerProtocol;
 import examples.stream.client.StreamSenderProtocol;
 
 public class StreamHandshaker extends HandshakerProtocol {
 
-    public StreamHandshaker(KryoServer server) {
+    public StreamHandshaker(EtylServer server) {
         super(StreamSenderProtocol.PREFIX_STREAM_ACTION, server);
     }
 
     @Override
-    public String handshakeText(Peer peer) {
-        return StreamSenderProtocol.PREFIX_CONNECT + " " + peer.getID() + " ";
+    public String buildHandshake(Peer peer) {
+        return StreamSenderProtocol.PREFIX_CONNECT + " " + peer.getId() + " ";
     }
 
 }

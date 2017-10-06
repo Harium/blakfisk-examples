@@ -1,10 +1,10 @@
 package examples.orientation.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
 import examples.orientation.client.OrientationClientProtocol;
 
-public class OrientationServer extends BlakFiskServer {
+public class OrientationServer extends EtylServer {
 
     private OrientationServerProtocol listener;
 
@@ -20,14 +20,14 @@ public class OrientationServer extends BlakFiskServer {
 
     @Override
     public void joinPeer(Peer peer) {
-        System.out.println("OrientationPeer " + peer.getID() + " connected.");
+        System.out.println("OrientationPeer " + peer.getId() + " connected.");
 
         listener.addPeer(peer);
     }
 
     @Override
     public void leftPeer(Peer peer) {
-        System.out.println("Player " + peer.getID() + " disconnected.");
+        System.out.println("Player " + peer.getId() + " disconnected.");
 
         listener.removePeer(peer);
     }

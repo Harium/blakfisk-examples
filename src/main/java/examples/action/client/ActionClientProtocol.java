@@ -1,10 +1,10 @@
 package examples.action.client;
 
 
-import com.harium.blakfisk.BlakFiskClient;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.common.StringClientProtocol;
-import com.harium.blakfisk.util.ByteMessageUtils;
+import com.harium.etyl.networking.EtylClient;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.common.StringClientProtocol;
+import com.harium.etyl.networking.util.ByteMessageUtils;
 import com.harium.etyl.commons.event.KeyEvent;
 import com.harium.etyl.commons.event.PointerEvent;
 
@@ -18,7 +18,7 @@ public class ActionClientProtocol extends StringClientProtocol {
     public static final String PREFIX_JOIN = "j";
     public static final String PREFIX_EXIT = "q";
 
-    public ActionClientProtocol(ActionClientListener listener, BlakFiskClient client) {
+    public ActionClientProtocol(ActionClientListener listener, EtylClient client) {
         super(PREFIX_ACTION, client);
         this.listener = listener;
     }

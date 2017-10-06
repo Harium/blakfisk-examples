@@ -1,8 +1,8 @@
 package examples.http.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.common.StringServerProtocol;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.common.StringServerProtocol;
 import examples.http.header.HTTPHeader;
 
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class HTTPServerProtocol extends StringServerProtocol {
 
-    public HTTPServerProtocol(String prefix, BlakFiskServer server) {
+    public HTTPServerProtocol(String prefix, EtylServer server) {
         super(prefix, server);
     }
 
@@ -34,7 +34,7 @@ public class HTTPServerProtocol extends StringServerProtocol {
     }
 
     protected void handlePath(Peer peer, String path, Map<String, String> params) {
-        sendTCPNoPrefix(peer, HTTPHeader.fakeResponse("<strong>Hello my friend " + peer.getID() + "</strong>"));
+        sendTCPNoPrefix(peer, HTTPHeader.fakeResponse("<strong>Hello my friend " + peer.getId() + "</strong>"));
     }
 
     private Map<String, String> getParams(String paramsText) {

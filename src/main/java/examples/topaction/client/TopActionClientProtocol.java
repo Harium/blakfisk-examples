@@ -1,8 +1,8 @@
 package examples.topaction.client;
 
-import com.harium.blakfisk.BlakFiskClient;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.common.StringClientProtocol;
+import com.harium.etyl.networking.EtylClient;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.common.StringClientProtocol;
 import com.harium.etyl.commons.event.KeyEvent;
 import com.harium.etyl.commons.event.PointerEvent;
 import examples.action.client.ActionClientListener;
@@ -21,7 +21,7 @@ public class TopActionClientProtocol extends StringClientProtocol {
     public static final String PREFIX_STATE = "s";
     public static final String PREFIX_CHANGE_WEAPON = "w";
 
-    public TopActionClientProtocol(ActionClientListener listener, BlakFiskClient client) {
+    public TopActionClientProtocol(ActionClientListener listener, EtylClient client) {
         super(PREFIX_ACTION, client);
         this.listener = listener;
     }

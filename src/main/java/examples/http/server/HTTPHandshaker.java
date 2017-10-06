@@ -1,18 +1,18 @@
 package examples.http.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.HandshakerProtocol;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.HandshakerProtocol;
 import examples.http.header.HTTPHeader;
 
 public class HTTPHandshaker extends HandshakerProtocol {
 
-    public HTTPHandshaker(String prefix, BlakFiskServer server) {
+    public HTTPHandshaker(String prefix, EtylServer server) {
         super(prefix, server);
     }
 
     @Override
-    public String handshakeText(Peer peer) {
+    public String buildHandshake(Peer peer) {
         return HTTPHeader.RESPONSE_OK + "\r\n" + "Connection: Close";
     }
 

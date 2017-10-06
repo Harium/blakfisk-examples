@@ -1,14 +1,14 @@
 package examples.stream.server;
 
-import com.harium.blakfisk.codec.image.ImageEncoder;
-import com.harium.blakfisk.codec.image.awt.BufferedImageDirectEncoder;
-import com.harium.blakfisk.codec.image.awt.BufferedImageEncoder;
-import com.harium.blakfisk.codec.image.awt.BufferedImageYUVDirectEncoder;
-import com.harium.blakfisk.compression.Compressor;
-import com.harium.blakfisk.model.Peer;
-import com.harium.blakfisk.protocol.common.ProtocolImpl;
-import com.harium.blakfisk.util.Base64;
-import com.harium.blakfisk.util.ByteMessageUtils;
+import com.harium.etyl.networking.codec.image.ImageEncoder;
+import com.harium.etyl.networking.codec.image.awt.BufferedImageDirectEncoder;
+import com.harium.etyl.networking.codec.image.awt.BufferedImageEncoder;
+import com.harium.etyl.networking.codec.image.awt.BufferedImageYUVDirectEncoder;
+import com.harium.etyl.networking.compression.Compressor;
+import com.harium.etyl.networking.model.Peer;
+import com.harium.etyl.networking.protocol.common.ProtocolImpl;
+import com.harium.etyl.networking.util.Base64;
+import com.harium.etyl.networking.util.ByteMessageUtils;
 import examples.stream.application.StreamClientApplication;
 import examples.stream.client.StreamSenderProtocol;
 import examples.stream.listener.StreamReceiverListener;
@@ -34,13 +34,13 @@ public class StreamReceiverProtocol extends ProtocolImpl {
 
     @Override
     public void addPeer(Peer peer) {
-        peers.put(peer.getID(), peer);
-        listener.addStream(peer.getID());
+        peers.put(peer.getId(), peer);
+        listener.addStream(peer.getId());
     }
 
     public void removePeer(Peer peer) {
-        peers.remove(peer.getID());
-        listener.removeStream(peer.getID());
+        peers.remove(peer.getId());
+        listener.removeStream(peer.getId());
     }
 
     public Map<Integer, Peer> getPeers() {
@@ -93,7 +93,7 @@ public class StreamReceiverProtocol extends ProtocolImpl {
         ImageEncoder<BufferedImage> encoder = new BufferedImageEncoder();
         BufferedImage image = encoder.decode(data);
 
-        listener.onReceiveImage(peer.getID(), image);
+        listener.onReceiveImage(peer.getId(), image);
     }
 
     private void receiveRawData(Peer peer, byte[] crop) {
@@ -110,7 +110,7 @@ public class StreamReceiverProtocol extends ProtocolImpl {
             ImageEncoder<BufferedImage> encoder = new BufferedImageDirectEncoder(StreamClientApplication.WIDTH, StreamClientApplication.HEIGHT);
             BufferedImage image = encoder.decode(decompressedData);
 
-            listener.onReceiveImage(peer.getID(), image);
+            listener.onReceiveImage(peer.getId(), image);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -130,7 +130,7 @@ public class StreamReceiverProtocol extends ProtocolImpl {
             ImageEncoder<BufferedImage> encoder = new BufferedImageYUVDirectEncoder(StreamClientApplication.WIDTH, StreamClientApplication.HEIGHT);
             BufferedImage image = encoder.decode(decompressedData);
 
-            listener.onReceiveImage(peer.getID(), image);
+            listener.onReceiveImage(peer.getId(), image);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

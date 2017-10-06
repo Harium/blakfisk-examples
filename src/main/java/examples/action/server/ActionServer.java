@@ -1,10 +1,10 @@
 package examples.action.server;
 
-import com.harium.blakfisk.BlakFiskServer;
-import com.harium.blakfisk.model.Peer;
+import com.harium.etyl.networking.EtylServer;
+import com.harium.etyl.networking.model.Peer;
 import examples.action.client.ActionClientProtocol;
 
-public class ActionServer extends BlakFiskServer {
+public class ActionServer extends EtylServer {
 
     private ActionServerProtocol listener;
 
@@ -20,14 +20,14 @@ public class ActionServer extends BlakFiskServer {
 
     @Override
     public void joinPeer(Peer peer) {
-        System.out.println("ActionPeer " + peer.getID() + " connected.");
+        System.out.println("ActionPeer " + peer.getId() + " connected.");
         listener.addPeer(peer);
         System.out.println("Peers " + this.getConnections().length);
     }
 
     @Override
     public void leftPeer(Peer peer) {
-        System.out.println("ActionPeer " + peer.getID() + " disconnected.");
+        System.out.println("ActionPeer " + peer.getId() + " disconnected.");
         listener.removePeer(peer);
         System.out.println("Peers " + this.getConnections().length);
     }
